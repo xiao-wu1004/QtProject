@@ -1,0 +1,60 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="关闭按钮_蓝色">img/close_1.png</file>
+        <file alias="关闭按钮_红色">img/close_2.png</file>
+        <file alias="关闭按钮_灰色">img/close_3.png</file>
+        <file alias="头像">img/head_img.png</file>
+        <file alias="状态开关_关">img/home_start_close.png</file>
+        <file alias="状态开关_开">img/home_start_open.png</file>
+        <file alias="未定义菜单">img/menu_0.png</file>
+        <file alias="智能对话">img/menu_1.png</file>
+        <file alias="视觉识别">img/menu_2.png</file>
+        <file alias="智能家居">img/menu_3.png</file>
+        <file alias="天气预报">img/menu_4.png</file>
+        <file alias="工控大屏">img/menu_5.png</file>
+        <file alias="电机控制">img/menu_6.png</file>
+        <file alias="头像2">img/head_img_2.png</file>
+        <file alias="搜索">img/search.png</file>
+        <file>citydata/city.txt</file>
+        <file>weatherIcon/sunny.png</file>
+        <file>weatherIcon/cloudy.png</file>
+        <file>weatherIcon/rainy.png</file>
+        <file alias="日期">img/date.png</file>
+        <file alias="风力">img/fl.png</file>
+        <file alias="湿度">img/shidu.png</file>
+        <file>weatherIcon/fog.png</file>
+        <file>weatherIcon/haze.png</file>
+        <file>weatherIcon/overcast.png</file>
+        <file>weatherIcon/shower.png</file>
+        <file>weatherIcon/snow.png</file>
+        <file>weatherIcon/thunder.png</file>
+        <file alias="哈基米">img/hajimi.jpg</file>
+        <file alias="不回家">img/return_home_off.png</file>
+        <file alias="回家">img/return_home_on.png</file>
+        <file alias="不睡觉">img/sleep_off.png</file>
+        <file alias="睡觉">img/sleep_on.png</file>
+        <file alias="不起床">img/wake_off.png</file>
+        <file alias="起床">img/wake_on.png</file>
+        <file alias="不离家">img/leave_home_off.png</file>
+        <file alias="离家">img/leave_home_on.png</file>
+        <file>img/music.png</file>
+        <file>img/next.png</file>
+        <file>img/pause.png</file>
+        <file>img/play.png</file>
+        <file>img/prev.png</file>
+        <file>img/volume.png</file>
+        <file>img/air_off.png</file>
+        <file>img/air_on.png</file>
+        <file>img/curtain_off.png</file>
+        <file>img/curtain_on.png</file>
+        <file>img/humidifier_off.png</file>
+        <file>img/humidifier_on.png</file>
+        <file>img/light_off.png</file>
+        <file>img/light_on.png</file>
+        <file>img/tv_off.png</file>
+        <file>img/tv_on.png</file>
+        <file>img/wifi_off.png</file>
+        <file>img/wifi_on.png</file>
+        <file>img/cd.png</file>
+    </qresource>
+</RCC>
