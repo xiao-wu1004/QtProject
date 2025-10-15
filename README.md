@@ -1,37 +1,127 @@
-# QtProject
+# QtProject: 跨平台智能应用集成解决方案
 
-#### 介绍
-Qt Project
-
-#### 软件架构
-软件架构说明
+## 项目概述
+QtProject 是一个基于 Qt 框架开发的跨平台智能应用集成系统，目前已完成三大核心模块：**智能对话模块**（基于硅基流动API的聊天交互）、**智能家居控制模块**（场景模式与设备管理）、**天气预报模块**（实时天气与未来趋势展示）。项目采用模块化设计，深度整合 Qt 桌面应用开发核心技术，涵盖 UI 组件化、网络通信、状态管理、数据可视化等企业级开发能力。
 
 
-#### 安装教程
+## 核心技术栈
+- **框架与语言**：Qt 5（Qt Widgets）、C++11+
+- **UI 开发**：
+  - 自定义控件（`MessageWidget`气泡组件、`HomeModeLabel`状态按钮、`TempCurveWidget`温度曲线）
+  - 布局管理（QVBoxLayout/QHBoxLayout 嵌套布局、自适应布局）
+  - 样式表（QSS 美化、圆角/阴影效果、状态切换样式）
+- **网络通信**：
+  - HTTP/HTTPS 接口调用（QNetworkAccessManager）
+  - JSON 数据解析（QJsonDocument/QJsonObject）
+  - 硅基流动 API 交互（聊天接口）、天气 API 对接
+- **状态管理**：
+  - 设备状态跟踪（QMap 存储`deviceStates`）
+  - 聊天消息数据模型（`m_chatMessages`）
+- **数据处理**：
+  - 城市数据加载与搜索补全（`loadCityData`、`initSearchCompleter`）
+  - 天气数据解析与格式化（高低温提取、日期处理）
+- **版本控制**：Git（含 `.gitignore` 规范配置）
+- **开源协议**：木兰宽松许可证（Mulan PSL v2）
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
 
-#### 使用说明
+## 软件架构
+### 模块划分
+1. **智能对话模块（SmartDialogWidget）**
+   - 核心功能：基于硅基流动 API 的人机对话、聊天记录管理、消息气泡展示
+   - 技术亮点：
+     - 自定义气泡控件（`MessageWidget`）实现左右对齐消息展示
+     - 网络请求异步处理（QNetworkAccessManager）与 API 密钥管理
+     - 消息加载状态提示（"AI正在思考"临时消息）
+   - 类设计：`SmartDialogWidget`（主控件）、`MessageWidget`（气泡组件）
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+2. **智能家居模块（SmartHomeWidget）**
+   - 核心功能：场景模式切换（归家/离家/睡眠/起床）、设备控制（灯光/空调/窗帘等）、状态可视化
+   - 技术亮点：
+     - 自定义状态按钮（`HomeModeLabel`）实现开关状态切换
+     - 设备状态集中管理（`deviceStates`映射表）
+     - 布局自适应与控件层次管理（`raise()`确保按钮可点击）
+   - 类设计：`SmartHomeWidget`（主控件）、`HomeModeLabel`（模式按钮）
 
-#### 参与贡献
+3. **天气预报模块（WeatherWidget）**
+   - 核心功能：城市天气搜索、今日天气展示（温度/湿度/风向）、未来7天预报（曲线+卡片）
+   - 技术亮点：
+     - 温度趋势可视化（`TempCurveWidget`曲线组件）
+     - 城市数据模糊搜索补全（`initSearchCompleter`）
+     - 天气图标映射机制（`m_weatherIconMap`）
+   - 类设计：`WeatherWidget`（主控件）、`TempCurveWidget`（曲线组件）
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+
+## 安装与部署
+### 环境要求
+- Qt 版本：Qt 5.14+
+- 编译器：MSVC 2019+ / GCC 8.3+ / Clang 10+
+- 系统支持：Windows 10+、Linux（Ubuntu 18.04+）、macOS 11+
+- 依赖：网络连接（用于 API 调用）
 
 
-#### 特技
+### 编译步骤
+1. 克隆仓库：`git clone https://gitee.com/your-username/QtProject.git`
+2. 打开 Qt Creator，加载项目文件（`.pro`）
+3. 配置构建套件（Kit），选择目标平台
+4. （智能对话模块）替换硅基流动 API 密钥：在 `smartdialogwidget.cpp` 中修改 `m_apiKey` 为有效密钥（从 [硅基流动官网](https://www.siliconflow.cn/) 获取）
+5. 构建项目：`Build > Build All`
+6. 运行程序：`Run > Run`
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+
+## 使用说明
+### 智能对话模块
+1. 输入框输入问题，点击「发送」按钮或按回车键提交
+2. 系统自动显示用户消息（右对齐气泡）和 AI 回复（左对齐气泡）
+3. 点击「清空」按钮可重置对话记录
+4. 首次使用需配置有效 API 密钥，否则功能不可用
+
+### 智能家居模块
+1. 场景模式切换：点击「归家」「离家」「睡觉」「起床」按钮切换场景，状态图标同步更新
+2. 设备控制：通过对应设备按钮切换开关状态（灯光/空调/窗帘等），状态实时记录
+
+### 天气预报模块
+1. 搜索框输入城市名，触发搜索获取天气数据
+2. 查看今日天气：温度、天气状态（晴/多云等）、湿度、风向风速
+3. 查看未来7天预报：
+   - 曲线图表：展示每日高低温趋势
+   - 卡片列表：显示星期、天气图标、高低温信息
+
+
+## 开发规范
+### 代码规范
+- 命名风格：类名采用 PascalCase（如 `SmartDialogWidget`），函数/变量采用 camelCase（如 `loadCityData`）
+- 注释要求：核心函数需包含功能描述、参数说明（如 `addMessageToChat` 方法）
+- UI 开发：优先使用布局管理器，避免固定坐标，确保跨分辨率适配
+
+### 协作流程
+1. Fork 仓库并创建分支：`git checkout -b Feat_xxx`（功能开发）/ `Fix_xxx`（bug 修复）
+2. 提交代码前确保功能可运行，无编译错误
+3. 提交 PR 时附功能说明，通过代码审查后合并
+
+
+## 技术亮点
+1. **组件化 UI 设计**：各模块独立封装，通过自定义控件（如气泡、状态按钮）实现复用
+2. **网络请求管理**：异步处理 API 交互，避免界面卡顿，含请求状态提示与错误处理
+3. **状态同步机制**：设备状态与 UI 展示双向绑定，确保数据一致性
+4. **数据可视化**：天气预报模块通过曲线组件直观展示温度趋势
+5. **跨平台适配**：基于 Qt 特性实现一次编码多平台运行，布局自适应不同设备
+
+
+## 参与贡献
+1. Fork 本仓库
+2. 新建特性分支（`Feat_xxx`）或修复分支（`Fix_xxx`）
+3. 提交代码（遵循代码规范）
+4. 新建 Pull Request，描述功能点或修复内容
+
+
+## 许可证
+本项目基于 [木兰宽松许可证，第2版](LICENSE) 开源，允许商业使用、修改、分发，详情参见许可证文本。
+
+
+## 联系方式
+- 项目维护：[16670931270@163.com]
+- 技术交流：Issues 或 Gitee 私信
+
+---
+
+通过本项目可掌握企业级 Qt 开发核心技能：模块化架构设计、网络 API 集成、自定义控件开发、状态管理等，适合作为桌面应用开发的实践参考。
